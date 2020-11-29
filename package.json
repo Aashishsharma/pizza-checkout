@@ -1,0 +1,17 @@
+{
+  "name": "pizza-checkout",
+  "version": "1.0.0",
+  "description": "pizaa checkout utility with flexible prixing rules",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pizza",
+    "checkout",
+    "discount"
+  ],
+  "author": "ashish sharma",
+  "license": "ISC"
+}
