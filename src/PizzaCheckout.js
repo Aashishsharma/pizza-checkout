@@ -54,6 +54,6 @@ getDiscountedPizza = (pizzaCount, pizzaDeal) => {
   let discountedPizzaCnt = Math.floor(pizzaCount / pizzaDeal[0]);
   let noDiscountPizzaCnt = pizzaCount % pizzaDeal[0];
   return (pizzaDeal[1] * discountedPizzaCnt) + noDiscountPizzaCnt;
- }
+}
 
 module.exports = PizzaCheckout;

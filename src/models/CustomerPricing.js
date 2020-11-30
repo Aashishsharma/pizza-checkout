@@ -1,5 +1,3 @@
-const pricingRules = require('../config/pricingRules');
-
 class CustomerPricing {
   /**
   * Represents a CustomerPricing
@@ -28,9 +26,9 @@ class CustomerPricing {
 }
 
 function CustomerPricingFactory() {
-  this.create = (customerName) => {
+  this.create = (customerName, pricingRules) => {
     const customerPricingRule = new CustomerPricing(customerName);
-    customerPricingRule.createRule(pricingRules[customerName]);
+    customerPricingRule.createRule(pricingRules);
     return customerPricingRule;
   }
 }
