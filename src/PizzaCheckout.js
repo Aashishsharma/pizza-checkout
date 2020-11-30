@@ -46,12 +46,14 @@ class PizzaCheckout {
 }
 
 /**
-* Add more Pizza's in the checkout
+* Get actual Pizza's to be billed
 * @param {number} pizzaCount - Pizza count
 * @param {Array} pizzaDeal   - Array of 2 numbers depicting the offer [3, 2] -> buy 2 get 3 Pizza's
 */
 getDiscountedPizza = (pizzaCount, pizzaDeal) => {
-  return Math.ceil((pizzaCount * pizzaDeal[1]) / pizzaDeal[0]);
-}
+  let discountedPizzaCnt = Math.floor(pizzaCount / pizzaDeal[0]);
+  let noDiscountPizzaCnt = pizzaCount % pizzaDeal[0];
+  return (pizzaDeal[1] * discountedPizzaCnt) + noDiscountPizzaCnt;
+ }
 
 module.exports = PizzaCheckout;
