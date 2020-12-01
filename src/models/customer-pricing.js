@@ -1,3 +1,5 @@
+const utility = require('../utils/utility');
+
 class CustomerPricing {
   /**
   * Represents a CustomerPricing
@@ -28,8 +30,12 @@ class CustomerPricing {
 function CustomerPricingFactory() {
   this.create = (customerName, pricingRules) => {
     const customerPricingRule = new CustomerPricing(customerName);
-    customerPricingRule.createRule(pricingRules);
-    return customerPricingRule;
+    if (!utility.isValidPricingRule(pricingRules)) {
+      throw new Error('Pricing Rule syntax is incorrect');  
+    } else {
+      customerPricingRule.createRule(pricingRules);
+      return customerPricingRule;      
+    }
   }
 }
 

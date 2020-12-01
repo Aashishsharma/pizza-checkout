@@ -1,17 +1,17 @@
-const PizzaCheckout = require('../src/PizzaCheckout');
-const PizzaFactory = require('../src/models/Pizza');
-const CustomerPricingFactory = require('../src/models/CustomerPricing');
+const PizzaCheckout = require('../src/pizza-checkout');
+const PizzaFactory = require('../src/models/pizza');
+const CustomerPricingFactory = require('../src/models/customer-pricing');
 
 let pizzaFactory;
 let customerPricingFactory;
 let pco;
 
 beforeAll(() => {
-	// Inititalize pricing rules for customers
-	return dummyPricingRules = {
-    "INFOSYS": [["SMALL", 3,2]],
+  // Inititalize dummy pricing rules for customers
+  return dummyPricingRules = {
+    "INFOSYS": [["SMALL", 3, 2]],
     "AMAZON": [["LARGE", 95]],
-    "FACEBOOK": [["MEDIUM", 5, 4], ["LARGE", 5], ["SMALL", 100]],
+    "FACEBOOK": [["MEDIUM", 5, 4], ["LARGE", 5]],
     "DEFAULT": [[]]
   };
 })
@@ -63,9 +63,9 @@ describe('Facebook customers - $5 discount on large pizaa + 5 on 4 offer on medi
 
 	expect(pco.pizzaItem.size).toEqual(3);
 	expect(pco.pricingRules.ruleMap.has("LARGE")).toBe(true);
-	expect(pco.pricingRules.ruleMap.has("SMALL")).toBe(true);
+	expect(pco.pricingRules.ruleMap.has("SMALL")).toBe(false);
 	expect(pco.pricingRules.ruleMap.has("MEDIUM")).toBe(true);
-	expect(pco.getTotalBill()).toEqual(10125.68);
+	expect(pco.getTotalBill()).toEqual(10525.68);
   });
 
 });

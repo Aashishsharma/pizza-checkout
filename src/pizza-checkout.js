@@ -1,3 +1,5 @@
+const utility = require('./utils/utility');
+
 class PizzaCheckout {
   /**
   * Represents a PizzaCheckout
@@ -28,7 +30,7 @@ class PizzaCheckout {
       if (this.pricingRules.ruleMap.has(pizza.type)) {
         // discount is of type -> buy 2 get 3
         if (this.pricingRules.ruleMap.get(pizza.type).length == 2) {
-          const noOfPizzasToBeBilled = getDiscountedPizza(pizzaCount, this.pricingRules.ruleMap.get(pizza.type));
+          const noOfPizzasToBeBilled = utility.getDiscountedPizza(pizzaCount, this.pricingRules.ruleMap.get(pizza.type));
           this.totalBill += noOfPizzasToBeBilled * pizza.price;
         }
         // discount is of type -> $50 off
@@ -43,17 +45,6 @@ class PizzaCheckout {
     })
     return this.totalBill;
   }
-}
-
-/**
-* Get actual Pizza's to be billed
-* @param {number} pizzaCount - Pizza count
-* @param {Array} pizzaDeal   - Array of 2 numbers depicting the offer [3, 2] -> buy 2 get 3 Pizza's
-*/
-getDiscountedPizza = (pizzaCount, pizzaDeal) => {
-  let discountedPizzaCnt = Math.floor(pizzaCount / pizzaDeal[0]);
-  let noDiscountPizzaCnt = pizzaCount % pizzaDeal[0];
-  return (pizzaDeal[1] * discountedPizzaCnt) + noDiscountPizzaCnt;
 }
 
 module.exports = PizzaCheckout;
