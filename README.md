@@ -2,8 +2,7 @@
 This library calculates the Pizaa bills for various customer's including the flexible discount strategy
 
 #### Dependencies
-NPM  
-Node.js  
+Node.js > 12.0.0 
 
 #### Config
 This library aims at keeping Pizza pricing rules as flexible as possible.  
